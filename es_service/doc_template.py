@@ -16,6 +16,7 @@ custom_analyzer = analyzer(
     filter=['lowercase', 'asciifolding', 'snowball']
 )
 
+
 class BaseDoc(Document):
     """
     wapo document mapping structure
@@ -39,9 +40,8 @@ class BaseDoc(Document):
     )  # Date field can be searched by special queries such as a range query.
     annotation = Text()
     # ft_vector = DenseVector(dims=300)  # fasttext embedding in the DenseVector field
-    sbert_vector = DenseVector(
-        dims=768
-    )  # sentence BERT embedding in the DenseVector field
+    # sbert_vector = DenseVector(dims=768)  # sentence BERT embedding in the DenseVector field
+    sbert_vector = Text()   # todo
 
     def save(self, *args, **kwargs):
         """
