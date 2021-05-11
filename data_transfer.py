@@ -8,6 +8,8 @@ from transformers import pipeline
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 from embedding_service.client import EmbeddingClient
+
+
 def taker(input_file, output_file, index_num):      # 找到所有690和805文档并导出为json
     with open(input_file, "r", encoding="utf-8") as old_json:
         with open(output_file, "w") as new_json:

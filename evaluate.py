@@ -1,10 +1,17 @@
+"""
+2021-05
+@Xiangyu Li
+@Shan Chen
+We use the default BM25 method of elastic search to find related documents,
+and sort by the sum of the cosine similarity between each subsection of the document and the query
+"""
+
 import argparse
-
 from elasticsearch import Elasticsearch
-
 from embedding_service.client import EmbeddingClient
 from metrics import Score
 from utils import parse_wapo_topics
+
 es = Elasticsearch()
 
 
@@ -19,7 +26,7 @@ def search(topic_id, index, k, q):
     # calculate cosine similarity
     doc_list = {}
     for doc in content_result['hits']['hits']+title_result['hits']['hits']:
-        embed_vec_list = doc['_source']['sbert_vector']  # todo
+        embed_vec_list = doc['_source']['sbert_vector']
         doc_cs = 0
         for sub_embed_vec in embed_vec_list:
             doc_cs += cosine_similarity(query_vector, sub_embed_vec)
