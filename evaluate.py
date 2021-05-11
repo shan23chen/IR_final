@@ -7,6 +7,8 @@ and sort by the sum of the cosine similarity between each subsection of the docu
 """
 
 import argparse
+
+import numpy as np
 from elasticsearch import Elasticsearch
 from embedding_service.client import EmbeddingClient
 from metrics import Score
@@ -22,15 +24,12 @@ def search(topic_id, index, k, q):
     query_vector = encoder.encode([q], pooling="mean").tolist()[0]
     # get result by searching content and title
     content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
-    title_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
+    title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo
     # calculate cosine similarity
     doc_list = {}
     for doc in content_result['hits']['hits']+title_result['hits']['hits']:
-        embed_vec_list = doc['_source']['sbert_vector']
-        doc_cs = 0
-        for sub_embed_vec in embed_vec_list:
-            doc_cs += cosine_similarity(query_vector, sub_embed_vec)
-        doc_list[doc['_id']] = doc_cs
+        embed_vec_list = np.array(doc['_source']['sbert_vector'])
+        doc_list[doc['_id']] = np.max(np.dot(embed_vec_list, np.array(query_vector)))
     ordered_doc = sorted(doc_list.items(), key=lambda kv: (kv[1], kv[0]))
     ordered_doc.reverse()
     # find the result's annotation
