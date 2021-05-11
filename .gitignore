@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+pa5_data/subset_wapo_50k_sbert_ft_filtered.jl
+pa5_data/wiki-news-300d-1M-subword.vec

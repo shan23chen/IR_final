@@ -1,0 +1,6 @@
+elasticsearch
+elasticsearch-dsl
+sentence-transformers
+flask
+numpy
+zmq

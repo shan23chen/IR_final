@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #CCFFFF;
+        }
+    </style>
+    <title>Washington Post Search via ES</title>
+</head>
+<body>
+
+<h3>Washington Post Search via ES</h3>
+<form action="{{ url_for('results') }}" name="search" method="post">
+    <label for="query">Query:</label>
+    <input type="text" id="query" name="query" size=50>
+    <input type="submit" value="Search">
+
+    <input type="radio" name="method"
+    value="BM25d" checked> BM25d
+    <input type="radio" name="method"
+    value="BM25c"> BM25c
+    <input type="radio" name="method"
+    value="fastText"> fastText
+    <input type="radio" name="method"
+    value="BERT"> BERT
+</form>
+
+<div>
+<img src="https://scontent.fnyc1-1.fna.fbcdn.net/v/t1.6435-9/69107203_100324601341228_2625374458478592000_n.png?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=2J3b3gWuZ_oAX-RrAUY&_nc_ht=scontent.fnyc1-1.fna&oh=5c279fd3b63928baf5322aaa34587ada&oe=60A6C55A">
+</div>
+
+</body>
+</html>
