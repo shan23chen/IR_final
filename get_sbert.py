@@ -1,3 +1,10 @@
+"""
+2021-05
+@Xiangyu Li
+@Shan Chen
+# get embeddings after Chester get the full dataset with summary
+"""
+
 import json
 from embedding_service.client import EmbeddingClient
 

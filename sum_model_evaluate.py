@@ -16,7 +16,6 @@ from utils import parse_wapo_topics
 
 es = Elasticsearch()
 
-
 def search(topic_id, index, k, q):
     result_annotations = []
     # use bert to encode

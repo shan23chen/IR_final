@@ -1,4 +1,11 @@
-#get summerization and stuffs
+"""
+2021-05
+@Xiangyu Li
+@Shan Chen
+#get summarization from default and pretrained BERT with rewriting a new json file
+Tried using muti thread to improve the speed but it did not work:
+Chester is investigating adding muti processing and getting the corpus we need.
+"""
 import threading
 import json
 import os
@@ -9,8 +16,10 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 from embedding_service.client import EmbeddingClient
 
-
-def taker(input_file, output_file, index_num):      # 找到所有690和805文档并导出为json
+"""
+Grab all documents that are relevant with 690 and 805
+"""
+def taker(input_file, output_file, index_num):
     with open(input_file, "r", encoding="utf-8") as old_json:
         with open(output_file, "w") as new_json:
             for i, line in enumerate(old_json):
@@ -34,13 +43,19 @@ class DataTransfer:
     def default_sum(self, min_length, max_length, text):
         return self.summarizer(text[:1024], max_length=max_length, min_length=min_length)[0]['summary_text']
 
+    """
+    Too slow to run pretrained on our own machine or colab
+    """
     # # pre-trained summarizer
     # def pre_trained_sum(self, text):
     #     inputs = self.tokenizer([text], max_length=1024, return_tensors='pt')
     #     summary_ids = self.model.generate(inputs['input_ids'])
     #     return [self.tokenizer.decode(g, skip_special_tokens=True, clean_up_tokenization_spaces=False) for g in summary_ids]
 
-    # transformer
+    """
+        Rewrite Json file
+        Tried using muti thread to improve the speed but it did not work:
+    """
     def transform_json(self, old_jsonfile, new_jsonfile):
         # delete file if exist
         if os.path.isfile(new_jsonfile):
@@ -66,7 +81,7 @@ class DataTransfer:
                     new_json.write('\n')
                     print(i, "done")
 
-    # summarization
+    # helper function splits text and get summarization
     def sub_summarization(self, para, k):
         default_text = []
         trained_text = []
@@ -87,7 +102,9 @@ class DataTransfer:
             # print('time cost2', time_end2 - time_start2, 's')
         return default_text, trained_text
 
-
+    """
+    Tried using muti thread to improve the speed but it did not work:
+    """
 class myThread(threading.Thread):
     def __init__(self, threadID, name, counter, ifilename, ofilename):
         threading.Thread.__init__(self)
@@ -106,6 +123,7 @@ class myThread(threading.Thread):
 if __name__ == "__main__":
     taker("subset_wapo_50k_sbert_ft_filtered.jl", "all-690-805.jl", 690)
 
+    #Tried using muti thread to improve the speed but it did not work:
     # threads = []
     # for i in range(4):
     #     th = myThread(i+1, "Thread-%s" % str(i+1), i+1, "690-805-%s.jl" % i, "filted%s.json" % i)
@@ -114,5 +132,5 @@ if __name__ == "__main__":
     #
     # for t in threads:
     #     t.join()
-    # print("退出主线程")
+    # print("exit main thread")
     pass

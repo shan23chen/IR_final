@@ -1,4 +1,9 @@
-# 方法1
+"""
+2021-05
+@Xiangyu Li
+@Shan Chen
+# TFIDF weighting embedding with many different attempts
+"""
 import heapq
 import numpy as np
 from nltk import word_tokenize

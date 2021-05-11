@@ -1,3 +1,12 @@
+"""
+2021-05
+@Xiangyu Li
+@Shan Chen
+#get summarization from default and pretrained BERT with rewriting a new json file
+Tried using muti thread to improve the speed but it did not work:
+Chester is investigating adding muti processing and getting the corpus we need.
+"""
+
 from flask import *
 from elasticsearch import Elasticsearch
 from embedding_service.client import EmbeddingClient
