@@ -29,10 +29,10 @@ def search(topic_id, index, k, q):
         content_result = es.search(index=index, size=k, body={"query": {"match": {"summary": q}}})
     else:
         content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
-    title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo
+    title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo adding title_result was not working (tried)
     # calculate cosine similarity
     doc_list = {}
-    for doc in content_result['hits']['hits']+title_result['hits']['hits']:
+    for doc in content_result['hits']['hits']:
         embed_vec_list = np.array(doc['_source']['sbert_vector'])
         doc_list[doc['_id']] = np.max(np.dot(embed_vec_list, np.array(query_vector)))
     ordered_doc = sorted(doc_list.items(), key=lambda kv: (kv[1], kv[0]))
