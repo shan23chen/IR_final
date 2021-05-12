@@ -19,6 +19,9 @@ python load_es_index.py --index_name wapo_docs_50k --wapo_path pa5_data/subset_w
 # load test wapo docs using into the index called "test" and test it
 python load_es_index.py --index_name test2 --wapo_path pa5_data/test.jl
 
+# load test wapo docs using into the index called "test" and test it
+python load_es_index.py --index_name test2 --wapo_path pa5_data/690-805-3-summarized.jl
+
 """
 used in same as PA5:
 tfidf_weighting.py

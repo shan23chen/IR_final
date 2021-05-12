@@ -47,13 +47,13 @@ class ESIndex(object):
             es_doc.doc_id = doc["doc_id"]
             es_doc.title = doc["title"]
             es_doc.author = doc["author"]
-            es_doc.content = doc["content_str"]
+            es_doc.content = doc["content"]
             # es_doc.custom_content = doc["content_str"]  # TODO: uncomment this to use custom analyzer on this field
             es_doc.annotation = doc["annotation"]
             es_doc.date = doc["published_date"]
             # es_doc.ft_vector = doc["ft_vector"]
-            es_doc.default_text = doc["default_text"]
-            es_doc.sbert_vector = doc["default_vector"]
+            es_doc.default_text = doc["summary"]
+            es_doc.sbert_vector = doc["summary_vector"]
             yield es_doc
 
     def load(self, docs: Union[Iterator[Dict], Sequence[Dict]]):

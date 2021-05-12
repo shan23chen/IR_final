@@ -29,11 +29,10 @@ def sa(input_file, new_jsonfile):
                         new_doc['content_str'] = q['content_str']
                 new_doc['default_text'] = doc['default_text']
                 default_text = [str(item[0]) for item in new_doc['default_text']]
-                new_doc['default_vector'] = encoder.encode(default_text).tolist()
+                new_doc['summary_vector'] = encoder.encode(default_text).tolist()
                 json.dump(new_doc, new_json)
                 new_json.write('\n')
                 print(i, "done")
 
-
-sa("filted0.json", "test.jl")
+sa("filted2.jl", "test3.jl")
 

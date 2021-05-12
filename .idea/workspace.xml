@@ -20,10 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8137a990-ee7b-4b66-b862-67db808f1470" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pa5_data/690-805-3-summarized.jl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pa5_data/topics2018.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pa5_data/topics2018.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es_service/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/es_service/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_sbert.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_sbert.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,33 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pa5_data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.get_sbert">
+    <configuration name="get_sbert" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="IR_final" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_sbert.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="sum_model_evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="IR_final" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -66,6 +94,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.get_sbert" />
         <item itemvalue="Python.sum_model_evaluate" />
       </list>
     </recent_temporary>
@@ -93,25 +122,25 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="1129" height="361" key="GridCell.Tab.0.bottom" timestamp="1620769630474">
+    <state width="1129" height="361" key="GridCell.Tab.0.bottom" timestamp="1620784165149">
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
-    <state width="1129" height="361" key="GridCell.Tab.0.bottom/0.23.2304.1273@0.23.2304.1273" timestamp="1620769630474" />
-    <state width="1129" height="361" key="GridCell.Tab.0.center" timestamp="1620769630473">
+    <state width="1129" height="361" key="GridCell.Tab.0.bottom/0.23.2304.1273@0.23.2304.1273" timestamp="1620784165149" />
+    <state width="1129" height="361" key="GridCell.Tab.0.center" timestamp="1620784165149">
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
-    <state width="1129" height="361" key="GridCell.Tab.0.center/0.23.2304.1273@0.23.2304.1273" timestamp="1620769630473" />
-    <state width="1129" height="361" key="GridCell.Tab.0.left" timestamp="1620769630473">
+    <state width="1129" height="361" key="GridCell.Tab.0.center/0.23.2304.1273@0.23.2304.1273" timestamp="1620784165149" />
+    <state width="1129" height="361" key="GridCell.Tab.0.left" timestamp="1620784165148">
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
-    <state width="1129" height="361" key="GridCell.Tab.0.left/0.23.2304.1273@0.23.2304.1273" timestamp="1620769630473" />
-    <state width="1129" height="361" key="GridCell.Tab.0.right" timestamp="1620769630474">
+    <state width="1129" height="361" key="GridCell.Tab.0.left/0.23.2304.1273@0.23.2304.1273" timestamp="1620784165148" />
+    <state width="1129" height="361" key="GridCell.Tab.0.right" timestamp="1620784165149">
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
-    <state width="1129" height="361" key="GridCell.Tab.0.right/0.23.2304.1273@0.23.2304.1273" timestamp="1620769630474" />
-    <state x="1487" y="23" width="773" height="1112" key="dock-window-1" timestamp="1620781959859">
+    <state width="1129" height="361" key="GridCell.Tab.0.right/0.23.2304.1273@0.23.2304.1273" timestamp="1620784165149" />
+    <state x="207" y="139" width="1474" height="1046" key="dock-window-1" timestamp="1620787149866">
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
-    <state x="1487" y="23" width="773" height="1112" key="dock-window-1/0.23.2304.1273@0.23.2304.1273" timestamp="1620781959859" />
+    <state x="207" y="139" width="1474" height="1046" key="dock-window-1/0.23.2304.1273@0.23.2304.1273" timestamp="1620787149866" />
   </component>
 </project>

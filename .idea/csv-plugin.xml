@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/get_sbert.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/scripts.sh">
           <value>
             <Attribute>
