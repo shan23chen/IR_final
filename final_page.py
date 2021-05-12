@@ -2,9 +2,7 @@
 2021-05
 @Xiangyu Li
 @Shan Chen
-#get summarization from default and pretrained BERT with rewriting a new json file
-Tried using muti thread to improve the speed but it did not work:
-Chester is investigating adding muti processing and getting the corpus we need.
+The final present page
 """
 
 from flask import *
@@ -12,6 +10,8 @@ from elasticsearch import Elasticsearch
 from embedding_service.client import EmbeddingClient
 import numpy as np
 from scipy import spatial
+from metrics import Score
+from utils import parse_wapo_topics
 
 app = Flask(__name__)
 
@@ -19,32 +19,33 @@ es = Elasticsearch()
 
 result_list = []
 
-def cosim(result, type, query, content):
-    cos_score = {}
-    if type == "sbert":
-        fieldName = "sbert_vector"
-        encoder = EmbeddingClient(
-            host="localhost", embedding_type="sbert"
-        )  # connect to the sbert embedding server
-    else:
-        fieldName = "ft_vector"
-        encoder = EmbeddingClient(
-            host="localhost", embedding_type="fasttext"
-        )  # connect to the fasttext embedding server
-    embedding = encoder.encode(query)
+def search(topic_id, index, k, q):
+    result_annotations = []
+    # use bert to encode
+    encoder = EmbeddingClient(host="localhost", embedding_type="sbert")
+    query_vector = encoder.encode([q], pooling="mean").tolist()[0]
+    # get result by searching content and title
+    content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
+    title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo
+    # calculate cosine similarity
+    doc_list = {}
+    for doc in content_result['hits']['hits']+title_result['hits']['hits']:
+        embed_vec_list = np.array(doc['_source']['sbert_vector'])
+        doc_list[doc['_id']] = np.max(np.dot(embed_vec_list, np.array(query_vector)))
+    ordered_doc = sorted(doc_list.items(), key=lambda kv: (kv[1], kv[0]))
+    ordered_doc.reverse()
 
-    print(embedding.shape)
-    for i in range(len(result)):
-        doc_vec = np.array(content[result[i]])
-        current_calc = spatial.distance.cosine(embedding, doc_vec)
-        cos_score[result[i]] = current_calc
-        # print(current_calc, np.array(content['_source'][fieldName]).shape)
+    #get id list:
+    result_list = [i[0] for i in ordered_doc]
 
-    print(cos_score)
-    sorted_string = sorted(cos_score.items(), key=lambda item: item[1])
-    final = [id[0] for id in sorted_string]
-
-    return final
+    # find the result's annotation
+    for i in ordered_doc:
+        if es.get(index=index, id=i[0], doc_type="_all")['_source']['annotation'].split('-')[0] == topic_id:
+            result_annotations.append(int(es.get(index=index, id=i[0], doc_type="_all")['_source']['annotation'].split('-')[1]))
+        else:
+            result_annotations.append(0)
+    print(result_annotations)
+    return result_annotations, result_list
 
 # home page
 @app.route("/")
@@ -56,55 +57,23 @@ def home():
 @app.route("/results", methods=["POST"])
 def results():
     query_text = request.form["query"]  # Get the raw user query from home page
-    method = request.form["method"]
+    topic_id = request.form["method"]
     global result_list
     result_list.clear()
     match = []
     id2vec_ft = {}
     id2vec_sbert = {}
 
-    query_results = es.search(index='wapo_docs_50k', size=20, body={"query": {"match": {"content": query_text}}})
+    result_annotations, result_list = search(topic_id, "test2", 20, query_text)
 
-    for doc in query_results["hits"]["hits"]:
-        result_list.append(doc["_id"])
-        id2vec_ft[doc["_id"]] = doc['_source']['ft_vector']
-        id2vec_sbert[doc["_id"]] = doc['_source']['sbert_vector']
-    result_list = result_list[:20]
-
-    if method == "BM25d":
-        print("1")
-        match = []
-        print(result_list)
-
-    elif method == "BM25c":
-        print("2")
-        match = []
-        result_list = []
-        query_results2 = es.search(index='wapo_docs_50k', size=20, body={"query": {"match": {"custom_content": query_text}}})
-        for doc in query_results2["hits"]["hits"]:
-            result_list.append(doc["_id"])
-        result_list = result_list[:20]
-        print(result_list)
-
-    elif method == "fastText":
-        print("3")
-        match = []
-        result_list = cosim(result_list, "fastText", [query_text], id2vec_ft)
-
-    else:
-        print("4")
-        # content = es.get(index = "wapo_docs_50k", id = str(result_list[0]),doc_type="_all") #dict type
-        match = []
-        result_list = cosim(result_list, "sbert", [query_text], id2vec_sbert)
-
-
-    for info in result_list:
-        content = es.get(index="wapo_docs_50k", id=str(info), doc_type="_all")
+    for info, score in zip(result_list, result_annotations):
+        content = es.get(index='test2', id=str(info), doc_type="_all")
         wapo = content['_source']
 
         title = wapo["title"]
         short_snippet = str(wapo["content"])[:150]
-        match.append((info, title, short_snippet, 0))
+
+        match.append((info, title, short_snippet, score))
 
     global length
     length = len(result_list)
@@ -113,7 +82,7 @@ def results():
     max_pages = (len(match) // 8)
 
     result_list = match
-    return render_template('results.html', page=1, matches=matches, query=query_text, max_pages=max_pages, length=length)
+    return render_template('results.html', page=1, matches=matches, query=query_text, max_pages=max_pages, length=length, result_annotations = result_annotations)
 
 
 # "next page" to show more results
@@ -137,7 +106,7 @@ def next_page(page_id):
 @app.route("/doc_data/<int:doc_id>")
 def doc_data(doc_id):
     # TODO:
-    article = es.get(index="wapo_docs_50k", id=str(str(doc_id)), doc_type="_all")['_source'] # just for less typing
+    article = es.get(index='test2', id=str(str(doc_id)), doc_type="_all")['_source'] # just for less typing
     context = str(article["content"])
     return render_template("doc.html", article=article, context=Markup(context), pd=article["date"],
                            author=article["author"], title=article["title"])

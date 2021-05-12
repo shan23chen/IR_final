@@ -21,17 +21,14 @@
     <input type="submit" value="Search">
 
     <input type="radio" name="method"
-    value="BM25d" checked> BM25d
+    value="690" checked> 690
     <input type="radio" name="method"
-    value="BM25c"> BM25c
-    <input type="radio" name="method"
-    value="fastText"> fastText
-    <input type="radio" name="method"
-    value="BERT"> BERT
+    value="805"> 805
 </form>
 
 <div>
     <p>You are on page {{page}}. Number of {{length}} articles are retrieved.</p>
+    <p>{{result_annotations}}</p>
     <p></p>
 		{% for match in matches%}
 		<dl>

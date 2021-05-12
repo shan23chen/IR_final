@@ -3,8 +3,7 @@
 @Xiangyu Li
 @Shan Chen
 #get summarization from default and pretrained BERT with rewriting a new json file
-Tried using muti thread to improve the speed but it did not work:
-Chester is investigating adding muti processing and getting the corpus we need.
+Tried using muti thread to improve the speed, it did work but slow, running this script on colab:
 """
 import threading
 import json
@@ -123,7 +122,7 @@ class myThread(threading.Thread):
 if __name__ == "__main__":
     taker("subset_wapo_50k_sbert_ft_filtered.jl", "all-690-805.jl", 690)
 
-    #Tried using muti thread to improve the speed but it did not work:
+    #Tried using muti thread to improve the speed
     # threads = []
     # for i in range(4):
     #     th = myThread(i+1, "Thread-%s" % str(i+1), i+1, "690-805-%s.jl" % i, "filted%s.json" % i)

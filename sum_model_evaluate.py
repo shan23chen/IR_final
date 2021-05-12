@@ -31,6 +31,8 @@ def search(topic_id, index, k, q):
         doc_list[doc['_id']] = np.max(np.dot(embed_vec_list, np.array(query_vector)))
     ordered_doc = sorted(doc_list.items(), key=lambda kv: (kv[1], kv[0]))
     ordered_doc.reverse()
+    result_list = [i[0] for i in ordered_doc]
+    print(result_list)
     # find the result's annotation
     for i in ordered_doc:
         if es.get(index=index, id=i[0], doc_type="_all")['_source']['annotation'].split('-')[0] == topic_id:

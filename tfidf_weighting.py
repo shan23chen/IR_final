@@ -3,6 +3,8 @@
 @Xiangyu Li
 @Shan Chen
 # TFIDF weighting embedding with many different attempts
+Remember to load index as PA5
+please run this file using the same command as PA5
 """
 import heapq
 import numpy as np
@@ -49,7 +51,9 @@ def search(topic_id, index, k, model, vector, q, analyzer):
         # response = analyzer.simulate(doc['_source']['content'])
         # custom_content = " ".join([t.token for t in response.tokens])
         # using top 20 largest tfidf term for doc
-
+        """
+        including titles
+        """
         # if doc['_source']['title']:
         #     embed_vec = 5 * np.array(doc_embedding(10, model, doc['_source']['content'])) + np.array(doc['_source']['ft_vector']) + 2 * np.array(doc_embedding(10, model, doc['_source']['title']))
         # else:
@@ -119,7 +123,9 @@ def build_corpus_model(index, analyzer, es_size):
     #     # scroll参数必须指定否则会报错
     #     query_scroll = es.scroll(scroll_id=scroll_id, scroll='5m')['hits']['hits']
     #     result += query_scroll
-
+    """
+    get related files
+    """
     result = es.search(index=index, size=33, body={
                   "query": {
                     "bool": {
@@ -134,6 +140,7 @@ def build_corpus_model(index, analyzer, es_size):
     for doc in result['hits']['hits']:
         # response = analyzer.simulate(doc['_source']['content'])
 
+        #get only nouns:
         content = doc['_source']['content']
         blob = TextBlob(content).noun_phrases
 
@@ -161,8 +168,9 @@ def doc_embedding(k, tfidf, doc):
     for value in tfidf_dict:
         heapq.heappush(h, (tfidf_dict[value], value))
     kw = np.array([i[1] for i in heapq.nlargest(k, h)])
-
-    # # use softmax to weight
+    """
+    use softmax to weight
+    """
     # kw_tfidf = np.array([tfidf_dict[word] for word in kw])
     # softmaxed = softmax(kw_tfidf)
     #
@@ -179,11 +187,11 @@ def doc_embedding(k, tfidf, doc):
 
 if __name__ == "__main__":
     connections.create_connection(hosts=["localhost"], timeout=100, alias="default")
+    #use custom stemmer with fasttxt:
     custom_analyzer = analyzer(
         "custom_analyzer",
         tokenizer="standard",
         filter=["lowercase", "asciifolding", "snowball", "stop"],
-
     )
 
     print("building tfidf model")
