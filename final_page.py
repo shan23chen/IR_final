@@ -52,17 +52,18 @@ def search(topic_id, index, k, q):
 def home():
     return render_template("home.html")
 
-
 # result page
 @app.route("/results", methods=["POST"])
 def results():
     query_text = request.form["query"]  # Get the raw user query from home page
     topic_id = request.form["method"]
+    query_type_index = {"title": 0, "description": 1, "narration": 2}
+    query_type = request.form["choice"]
+    if not query_text:
+        query_text = parse_wapo_topics("pa5_data/topics2018.xml")[str(topic_id)][query_type_index[query_type]]
     global result_list
     result_list.clear()
     match = []
-    id2vec_ft = {}
-    id2vec_sbert = {}
 
     result_annotations, result_list = search(topic_id, "test2", 20, query_text)
 
@@ -89,7 +90,6 @@ def results():
 @app.route("/results/<int:page_id>", methods=["POST"])
 def next_page(page_id):
     # TODO:
-    #print(page_id,"iii")
     query_text = request.form["query"]
     global length
     match = result_list

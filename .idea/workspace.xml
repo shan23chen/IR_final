@@ -21,10 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8137a990-ee7b-4b66-b862-67db808f1470" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_transfer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sum_model_evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/sum_model_evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pa5_data/topics2018.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pa5_data/topics2018.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,9 +109,9 @@
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
     <state width="1129" height="361" key="GridCell.Tab.0.right/0.23.2304.1273@0.23.2304.1273" timestamp="1620769630474" />
-    <state x="1236" y="130" width="773" height="1112" key="dock-window-1" timestamp="1620772890145">
+    <state x="1487" y="23" width="773" height="1112" key="dock-window-1" timestamp="1620781959859">
       <screen x="0" y="23" width="2304" height="1273" />
     </state>
-    <state x="1236" y="130" width="773" height="1112" key="dock-window-1/0.23.2304.1273@0.23.2304.1273" timestamp="1620772890145" />
+    <state x="1487" y="23" width="773" height="1112" key="dock-window-1/0.23.2304.1273@0.23.2304.1273" timestamp="1620781959859" />
   </component>
 </project>
