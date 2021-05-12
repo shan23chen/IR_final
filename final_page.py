@@ -67,6 +67,8 @@ def results():
 
     result_annotations, result_list = search(topic_id, "ir_final", 20, query_text)
 
+    score1 = Score
+
     for info, score in zip(result_list, result_annotations):
         content = es.get(index='test2', id=str(info), doc_type="_all")
         wapo = content['_source']
@@ -83,11 +85,10 @@ def results():
     max_pages = (len(match) // 8)
 
     result_list = match
-    print("**********", matches)
-    print("**********", query_text)
-    print("**********", result_annotations)
+    ndcg = score1.eval(result_annotations, 20)
+    super8 = score1.rel_top_eight(result_annotations, 8)
     return render_template('results.html', page=1, matches=matches, query=query_text, max_pages=max_pages,
-                           length=length, result_annotations=result_annotations)
+                           length=length, result_annotations=result_annotations, ndcg=ndcg, super8=super8)
 
 
 # "next page" to show more results

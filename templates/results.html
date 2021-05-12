@@ -50,6 +50,8 @@
             </form>
 
             <h4 class="mt-3">You are on page {{page}}. Number of {{length}} articles are retrieved.</h4>
+            <h5>NDCG: {{ndcg}}.</h5>
+            <h5>Top8:{{super8}}.</h5>
             <h6 class="mt-3">{{result_annotations}}</h6>
             <ul class="list-unstyled">
                 {%for match in matches%}

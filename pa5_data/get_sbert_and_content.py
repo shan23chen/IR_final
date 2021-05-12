@@ -35,5 +35,26 @@ def main(input_file, output_file):
                 print(i, "done")
 
 
+def fixed_chester(input_file, output_file):
+    encoder = EmbeddingClient(host="localhost", embedding_type="sbert")
+    with open(output_file, "w") as new_json:
+        with open(input_file, "r", encoding="utf-8") as filted2:
+            for i, line in enumerate(filted2):
+                new_doc = {}
+                doc = json.loads(line)
+                new_doc['title'] = doc['title']
+                new_doc['doc_id'] = doc['doc_id']
+                new_doc['content'] = doc['content']
+                new_doc['author'] = doc['author']
+                new_doc['annotation'] = doc['annotation']
+                new_doc['published_date'] = doc['published_date']
+                new_doc['summary'] = doc['summary']
+                new_doc['summary_vector'] = encoder.encode([i for i in doc['summary'].split('.')]).tolist()
+                json.dump(new_doc, new_json)
+                new_json.write('\n')
+                print(i, "done")
+
+
 if __name__ == "__main__":
-    main("filted0.json", "same_structure.jl")
+    # main("filted0.json", "same_structure.jl")
+    fixed_chester("merged_source.jl", "wapo.jl")
