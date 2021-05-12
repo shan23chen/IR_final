@@ -3,9 +3,7 @@ from elasticsearch_dsl import (  # type: ignore
     Document,
     Text,
     Keyword,
-    DenseVector,
     Date,
-    token_filter,
     analyzer,
 )
 

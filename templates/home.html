@@ -1,41 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <style>
-        body {
-            background-color: #CCFFFF;
-        }
-    </style>
-    <title>Washington Post Search via ES</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Washington Post Search via ES</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+                crossorigin="anonymous"></script>
+    </head>
 
-<h3>Washington Post Search via ES</h3>
-<form action="{{ url_for('results') }}" name="search" method="post">
-    <label for="query">Query:</label>
-    <input type="text" id="query" name="query" size=50>
-    <input type="submit" value="Search">
+    <body style="background-repeat: no-repeat; background-size: cover;background-image: url({{url_for('static', filename='bg.jpeg')}});">
+        <div class="container mt-5">
+            <br>
+                <h3 class="text-center mt-5 mb-4">Washington Post Search via ES</h3>
+            <br>
 
-    <input type="radio" name="method"
-    value="690" checked> 690
-    <input type="radio" name="method"
-    value="805"> 805
-    <label for="choice">Choose a query:</label>
-    <select name="choice" id="choice">
-        <optgroup label="type">
-            <option value="title">title</option>
-            <option value="description">description</option>
-            <option value="narration">narration</option>
-        </optgroup>
+            <form action="{{ url_for('results')}}" name="search" method="post">
+                <!--search bar-->
+                <div class="input-group">
+                    <input type="text" class="form-control rounded" placeholder="Search" id="query" name="query"/>
+                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                </div>
+                <br>
+                <!--radio buttons-->
+                <div class="row justify-content-md-enc">
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="topic_id" id="flexRadioDefault1" value="690" checked="checked">
+                            <label class="form-check-label" for="flexRadioDefault1">690</label>
+                        </div>
 
-    </select>
-
-</form>
-
-<div>
-<img src="https://scontent.fnyc1-1.fna.fbcdn.net/v/t1.6435-9/69107203_100324601341228_2625374458478592000_n.png?_nc_cat=107&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=2J3b3gWuZ_oAX-RrAUY&_nc_ht=scontent.fnyc1-1.fna&oh=5c279fd3b63928baf5322aaa34587ada&oe=60A6C55A">
-</div>
-
-</body>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="topic_id" id="flexRadioDefault2" value="805">
+                            <label class="form-check-label" for="flexRadioDefault2">805</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="query_type" id="flexRadioDefault3" value="title" checked="checked">
+                            <label class="form-check-label" for="flexRadioDefault3">title</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="query_type" id="flexRadioDefault4" value="description">
+                            <label class="form-check-label" for="flexRadioDefault4">description</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="query_type" id="flexRadioDefault5" value="narration">
+                            <label class="form-check-label" for="flexRadioDefault5">narration</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>

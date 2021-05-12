@@ -16,6 +16,7 @@ from utils import parse_wapo_topics
 
 es = Elasticsearch()
 
+
 def search(topic_id, index, k, q):
     result_annotations = []
     # use bert to encode
@@ -32,14 +33,14 @@ def search(topic_id, index, k, q):
     ordered_doc = sorted(doc_list.items(), key=lambda kv: (kv[1], kv[0]))
     ordered_doc.reverse()
     result_list = [i[0] for i in ordered_doc]
-    print(result_list)
+    print("result list:", result_list)
     # find the result's annotation
     for i in ordered_doc:
         if es.get(index=index, id=i[0], doc_type="_all")['_source']['annotation'].split('-')[0] == topic_id:
             result_annotations.append(int(es.get(index=index, id=i[0], doc_type="_all")['_source']['annotation'].split('-')[1]))
         else:
             result_annotations.append(0)
-    print(result_annotations)
+    print("result annotation:", result_annotations)
     return result_annotations
 
 
@@ -68,4 +69,4 @@ if __name__ == "__main__":
     searched_result = search(str(args.topic_id), args.index_name, args.top_k, query)
     score = Score
     print(score.eval(searched_result, args.top_k))
-    print(score.rel_top_eight(searched_result,8))
+    print(score.rel_top_eight(searched_result, 8))

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+    </style>
+    <title>Washington Post Search Result</title>
+</head>
+<body>
+
+<h3>Washington Post Search Result</h3>
+<?
+ $test = $_POST['q_name'];
+ ?>
+<form action="{{ url_for('results') }}" name="search" method="post">
+    <label for="query">Query:</label>
+    <input type="text" id="query" name="query" value="{{query}}" size=50>
+    <input type="submit" value="Search">
+
+    <input type="radio" name="method"
+    value="690" checked> 690
+    <input type="radio" name="method"
+    value="805"> 805
+</form>
+
+<div>
+    <p>You are on page {{page}}. Number of {{length}} articles are retrieved.</p>
+    <p>{{result_annotations}}</p>
+    <p></p>
+		{% for match in matches%}
+		<dl>
+            <dt><b>Score = {{match[3]}} || Article name: </b></dt>
+			<dd><b><a href="{{url_for('doc_data',doc_id=match[0])}}">{{match[1]}}</a></b></dd>
+            <p>{{match[2]}}</p>
+		</dl>
+		{% endfor %}
+</div>
+
+{% if page <= max_pages %}
+<form action="{{url_for('next_page',page_id=page)}}" name="Next" method="post">
+    <input type="hidden" value="{{query}}" id="query" name="query" size=50>
+    <input type="submit" value="Next">
+</form>
+{% endif %}
+</body>
+</html>

@@ -16,10 +16,11 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 from embedding_service.client import EmbeddingClient
 
-"""
-Grab all documents that are relevant with 690 and 805
-"""
+
 def taker(input_file, output_file, index_num):
+    """
+    Grab all documents that are relevant with 690 and 805
+    """
     with open(input_file, "r", encoding="utf-8") as old_json:
         with open(output_file, "w") as new_json:
             for i, line in enumerate(old_json):
@@ -50,7 +51,8 @@ class DataTransfer:
     # def pre_trained_sum(self, text):
     #     inputs = self.tokenizer([text], max_length=1024, return_tensors='pt')
     #     summary_ids = self.model.generate(inputs['input_ids'])
-    #     return [self.tokenizer.decode(g, skip_special_tokens=True, clean_up_tokenization_spaces=False) for g in summary_ids]
+    #     return [self.tokenizer.decode(g, skip_special_tokens=True,
+    #     clean_up_tokenization_spaces=False) for g in summary_ids]
 
     """
         Rewrite Json file
@@ -102,9 +104,12 @@ class DataTransfer:
             # print('time cost2', time_end2 - time_start2, 's')
         return default_text, trained_text
 
-    """
-    Tried using muti thread to improve the speed but it did not work:
-    """
+
+"""
+Tried using muti thread to improve the speed but it did not work:
+"""
+
+
 class myThread(threading.Thread):
     def __init__(self, threadID, name, counter, ifilename, ofilename):
         threading.Thread.__init__(self)
@@ -123,7 +128,8 @@ class myThread(threading.Thread):
 if __name__ == "__main__":
     taker("subset_wapo_50k_sbert_ft_filtered.jl", "all-690-805.jl", 690)
 
-    #Tried using muti thread to improve the speed: https://colab.research.google.com/drive/1I59D9qKCxYPEg32ZU2HLBotJZWMoGTQQ?usp=sharing
+    # Tried using muti thread to improve the speed:
+    # https://colab.research.google.com/drive/1I59D9qKCxYPEg32ZU2HLBotJZWMoGTQQ?usp=sharing
 
     # threads = []
     # for i in range(4):
