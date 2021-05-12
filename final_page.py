@@ -29,10 +29,11 @@ def search(topic_id, index, k, q):
         content_result = es.search(index=index, size=k, body={"query": {"match": {"summary": q}}})
     else:
         content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
-    title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo adding title_result was not working (tried)
+    title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  #   todo adding title_result was not working (tried)
     # calculate cosine similarity
     doc_list = {}
     for doc in content_result['hits']['hits']:
+    # for doc in content_result['hits']['hits'] + title_result['hits']['hits']:
         embed_vec_list = np.array(doc['_source']['sbert_vector'])
         doc_list[doc['_id']] = np.max(np.dot(embed_vec_list, np.array(query_vector)))
     ordered_doc = sorted(doc_list.items(), key=lambda kv: (kv[1], kv[0]))
@@ -68,12 +69,12 @@ def results():
     result_list.clear()
     match = []
 
-    result_annotations, result_list = search(topic_id, "ir_final", 20, query_text)
+    result_annotations, result_list = search(topic_id, "ir_final", 16, query_text)
 
     score1 = Score
 
     for info, score in zip(result_list, result_annotations):
-        content = es.get(index='test2', id=str(info), doc_type="_all")
+        content = es.get(index='ir_final', id=str(info), doc_type="_all")
         wapo = content['_source']
 
         title = wapo["title"]

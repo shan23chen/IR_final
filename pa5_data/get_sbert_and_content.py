@@ -57,4 +57,5 @@ def fixed_chester(input_file, output_file):
 
 if __name__ == "__main__":
     # main("filted0.json", "same_structure.jl")
-    fixed_chester("merged_source.jl", "wapo.jl")
+    # fixed_chester("690-805-0-summarized.jl", "wapo.jl")
+    pass
