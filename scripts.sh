@@ -20,7 +20,7 @@ python load_es_index.py --index_name wapo_docs_50k --wapo_path pa5_data/subset_w
 python load_es_index.py --index_name test2 --wapo_path pa5_data/test.jl
 
 # load test wapo docs using into the index called "ir_final" and test it
-python load_es_index.py --index_name ir_final --wapo_path pa5_data/merged_source.jl
+python load_es_index.py --index_name ir_final --wapo_path pa5_data/wapo.jl
 
 """
 used in same as PA5:

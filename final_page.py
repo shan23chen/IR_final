@@ -25,7 +25,10 @@ def search(topic_id, index, k, q):
     encoder = EmbeddingClient(host="localhost", embedding_type="sbert")
     query_vector = encoder.encode([q], pooling="mean").tolist()[0]
     # get result by searching content and title
-    content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
+    if str(topic_id) == '690':
+        content_result = es.search(index=index, size=k, body={"query": {"match": {"summary": q}}})
+    else:
+        content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
     title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo
     # calculate cosine similarity
     doc_list = {}
