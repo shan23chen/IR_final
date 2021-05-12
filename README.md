@@ -2,4 +2,7 @@
 
 Most code commands are the same as PA5,
 
-test.jl is a test corpus with default transformer summerizations, awaiting for bigger corpus to test
+wapo.jl with default transformer summerizations and sebert for each summarization chunks,
+data is here:  
+
+https://drive.google.com/file/d/1paIXaASb-292g5-Wl5bArxRbeD4Wtwge/view?usp=sharing
