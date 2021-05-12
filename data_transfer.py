@@ -4,6 +4,7 @@
 @Shan Chen
 #get summarization from default and pretrained BERT with rewriting a new json file
 Tried using muti thread to improve the speed, it did work but slow, running this script on colab:
+https://colab.research.google.com/drive/1I59D9qKCxYPEg32ZU2HLBotJZWMoGTQQ?usp=sharing
 """
 import threading
 import json
@@ -122,7 +123,8 @@ class myThread(threading.Thread):
 if __name__ == "__main__":
     taker("subset_wapo_50k_sbert_ft_filtered.jl", "all-690-805.jl", 690)
 
-    #Tried using muti thread to improve the speed
+    #Tried using muti thread to improve the speed: https://colab.research.google.com/drive/1I59D9qKCxYPEg32ZU2HLBotJZWMoGTQQ?usp=sharing
+
     # threads = []
     # for i in range(4):
     #     th = myThread(i+1, "Thread-%s" % str(i+1), i+1, "690-805-%s.jl" % i, "filted%s.json" % i)

@@ -20,15 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8137a990-ee7b-4b66-b862-67db808f1470" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_transfer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sum_model_evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/sum_model_evaluate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tfidf_weighting.py" beforeDir="false" afterPath="$PROJECT_DIR$/tfidf_weighting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/高端大气.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/gddq.jpeg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

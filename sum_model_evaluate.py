@@ -68,3 +68,4 @@ if __name__ == "__main__":
     searched_result = search(str(args.topic_id), args.index_name, args.top_k, query)
     score = Score
     print(score.eval(searched_result, args.top_k))
+    print(score.rel_top_eight(searched_result,8))

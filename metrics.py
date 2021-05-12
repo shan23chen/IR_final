@@ -75,6 +75,14 @@ class Score(NamedTuple):
             ndcg(relevance, top_k),
         )
 
+    def rel_top_eight(relevance: Sequence[int], k) -> float:
+        relevance_len = len(relevance)
+        top_k = relevance[:k]
+        sorted_relevance = sorted(relevance, reverse=True)
+        try:
+            return sum(relevance[:8]) / sum(sorted_relevance[:8])
+        except ZeroDivisionError:
+            return 0.0
 
 if __name__ == "__main__":
     pass
