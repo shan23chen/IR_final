@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8137a990-ee7b-4b66-b862-67db808f1470" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es_service/doc_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/es_service/doc_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gddq.jpeg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

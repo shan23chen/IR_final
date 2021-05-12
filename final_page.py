@@ -59,6 +59,7 @@ def home():
 # result page
 @app.route("/results", methods=["POST"])
 def results():
+    # todo for Chester here, change line 63 to a drop-down pre select list of queries
     query_text = request.form["query"]  # Get the raw user query from home page
     topic_id = request.form["topic_id"]
     query_type_index = {"title": 0, "description": 1, "narration": 2}
