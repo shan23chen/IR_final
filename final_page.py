@@ -115,7 +115,7 @@ def next_page(page_id):
 @app.route("/doc_data/<int:doc_id>")
 def doc_data(doc_id):
     # TODO:
-    article = es.get(index='test2', id=str(str(doc_id)), doc_type="_all")['_source']    # just for less typing
+    article = es.get(index='ir_final', id=str(str(doc_id)), doc_type="_all")['_source']    # just for less typing
     context = str(article["content"])
     return render_template("doc.html", article=article, context=Markup(context), pd=article["date"],
                            author=article["author"], title=article["title"])
