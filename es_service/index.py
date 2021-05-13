@@ -48,7 +48,9 @@ class ESIndex(object):
             es_doc.title = doc["title"]
             es_doc.author = doc["author"]
             es_doc.content = doc["content"]
-            # es_doc.custom_content = doc["content_str"]  # TODO: uncomment this to use custom analyzer on this field
+            # es_doc.custom_content = doc["content"]  # TODO: uncomment this to use custom analyzer on this field
+            es_doc.whitespace_content = doc['content']
+            es_doc.classic_content = doc['content']
             es_doc.annotation = doc["annotation"]
             es_doc.date = doc["published_date"]
             # es_doc.ft_vector = doc["ft_vector"]

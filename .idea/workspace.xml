@@ -20,10 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8137a990-ee7b-4b66-b862-67db808f1470" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/IR_final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IR_final.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/es_service/doc_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/es_service/doc_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gddq.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/es_service/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/es_service/index.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sum_model_evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/sum_model_evaluate.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +42,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PycharmProjects/cosi132a_hw5" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -119,27 +121,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1132" height="361" key="GridCell.Tab.0.bottom" timestamp="1620833536680">
-      <screen x="0" y="23" width="2304" height="1273" />
-    </state>
-    <state width="1132" height="361" key="GridCell.Tab.0.bottom/0.23.2304.1273@0.23.2304.1273" timestamp="1620833536680" />
-    <state width="1132" height="361" key="GridCell.Tab.0.center" timestamp="1620833536679">
-      <screen x="0" y="23" width="2304" height="1273" />
-    </state>
-    <state width="1132" height="361" key="GridCell.Tab.0.center/0.23.2304.1273@0.23.2304.1273" timestamp="1620833536679" />
-    <state width="1132" height="361" key="GridCell.Tab.0.left" timestamp="1620833536678">
-      <screen x="0" y="23" width="2304" height="1273" />
-    </state>
-    <state width="1132" height="361" key="GridCell.Tab.0.left/0.23.2304.1273@0.23.2304.1273" timestamp="1620833536678" />
-    <state width="1132" height="361" key="GridCell.Tab.0.right" timestamp="1620833536680">
-      <screen x="0" y="23" width="2304" height="1273" />
-    </state>
-    <state width="1132" height="361" key="GridCell.Tab.0.right/0.23.2304.1273@0.23.2304.1273" timestamp="1620833536680" />
-    <state x="207" y="139" width="1474" height="1046" key="dock-window-1" timestamp="1620787149866">
-      <screen x="0" y="23" width="2304" height="1273" />
-    </state>
-    <state x="207" y="139" width="1474" height="1046" key="dock-window-1/0.23.2304.1273@0.23.2304.1273" timestamp="1620787149866" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
