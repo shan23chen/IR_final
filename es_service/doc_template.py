@@ -17,10 +17,22 @@ from elasticsearch_dsl import (  # type: ignore
 # TODO: build your own analyzer
 custom_analyzer = analyzer(
     'custom_analyzer',
-    tokenizer='standard',
-    filter=['lowercase', 'asciifolding', 'snowball']
+    tokenizer='whitespace',
+    filter=['lowercase', 'asciifolding']
 )
 
+whitespace_analyzer = analyzer(
+    "whitespace",
+    tokenizer="whitespace",
+    filter=['lowercase', 'asciifolding']
+)
+
+
+classic_analyzer = analyzer(
+    "classic",
+    tokenizer="classic",
+    filter=['lowercase', 'asciifolding']
+)
 
 class BaseDoc(Document):
     """
@@ -37,9 +49,15 @@ class BaseDoc(Document):
     content = Text(
         analyzer="standard"
     )  # we can also set the standard analyzer explicitly
-    # custom_content = Text(
-    #     analyzer=custom_analyzer
-    # )  # TODO: uncomment this to index the same content again with your custom analyzer
+    custom_content = Text(
+        analyzer=custom_analyzer
+    )  # TODO: uncomment this to index the same content again with your custom analyzer
+    whitespace_content = Text(
+        analyzer=whitespace_analyzer
+    )
+    classic_content = Text(
+        analyzer=classic_analyzer
+    )
     date = Date(
         format="yyyy/MM/dd"
     )  # Date field can be searched by special queries such as a range query.
