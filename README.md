@@ -1,6 +1,6 @@
 # IR_final
 
-Most code commands are the same as PA5,
+Most code commands are the same as PA5 read closer into "scripts.sh"
 
 wapo.jl with default transformer summerizations and sebert for each summarization chunks,
 data is here:  
