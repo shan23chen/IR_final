@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Washington Post Search</title>
+        <title>Pig GoGo 690 & 805 Result</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
@@ -11,7 +11,8 @@
     </head>
     <body style="background-repeat: no-repeat; background-size: cover; background-image: url({{url_for('static', filename='bg.jpeg')}});">
         <div class="container">
-            <h3 class="text-center mt-3">Washington Post Search via ES</h3>
+            <a href ="http://localhost:5001/" ><img src="https://i.ibb.co/j3hWf1Y/ppig.png" alt="ppig" border="0" width="50" height="50"></a>
+            <h3 class="text-center mt-3">Pig GoGo 690 & 805</h3>
             <form action="{{ url_for('results')}}" name="search" method="post">
                 <!--search bar-->
                 <div class="input-group">
@@ -51,7 +52,7 @@
 
             <h4 class="mt-3">You are on page {{page}}. Number of {{length}} articles are retrieved.</h4>
             <h5>NDCG: {{ndcg}}.</h5>
-            <h5>Top8:{{super8}}.</h5>
+            <h5>Top8: {{super8}}/1.0 <i>(how much valid result show on the first page)</i></h5>
             <h6 class="mt-3">{{result_annotations}}</h6>
             <ul class="list-unstyled">
                 {%for match in matches%}

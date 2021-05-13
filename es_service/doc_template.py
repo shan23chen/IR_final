@@ -1,3 +1,10 @@
+"""
+2021-05
+@Xiangyu Li
+@Shan Chen
+Removed and added fields based on needs in class BaseDoc
+"""
+
 from elasticsearch_dsl.connections import connections
 from elasticsearch_dsl import (  # type: ignore
     Document,
