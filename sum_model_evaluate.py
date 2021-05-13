@@ -17,13 +17,16 @@ from utils import parse_wapo_topics
 es = Elasticsearch()
 
 
-def search(topic_id, index, k, q):
+def search(topic_id, index, k, q, tokenizer: str = ""):
+    tokenizer_content = "content"
+    if tokenizer:
+        tokenizer_content = tokenizer + "_content"
     result_annotations = []
     # use bert to encode
     encoder = EmbeddingClient(host="localhost", embedding_type="sbert")
     query_vector = encoder.encode([q], pooling="mean").tolist()[0]
     # get result by searching content and title
-    content_result = es.search(index=index, size=k, body={"query": {"match": {"content": q}}})
+    content_result = es.search(index=index, size=k, body={"query": {"match": {tokenizer_content: q}}})
     title_result = es.search(index=index, size=k, body={"query": {"match": {"title": q}}})  # todo
     # calculate cosine similarity
     doc_list = {}
@@ -51,6 +54,8 @@ def build_args():
     parser.add_argument("--query_type", required=True, type=str, choices=["title", "narration", "description"],
                         help="title, narration, description")
     parser.add_argument("--top_k", required=True, type=int, help="top k")
+    parser.add_argument("--tokenizer", required=False, type=str, choices=["classic", "whitespace", "ngram"],
+                        help="which tokenizer to use")
     return parser.parse_args()
 
 
@@ -66,7 +71,7 @@ if __name__ == "__main__":
     query_type_index = {"title": 0, "description": 1, "narration": 2}
     args = build_args()
     query = parse_wapo_topics("pa5_data/topics2018.xml")[str(args.topic_id)][query_type_index[args.query_type]]
-    searched_result = search(str(args.topic_id), args.index_name, args.top_k, query)
+    searched_result = search(str(args.topic_id), args.index_name, args.top_k, query, args.tokenizer)
     score = Score
     print(score.eval(searched_result, args.top_k))
     print(score.rel_top_eight(searched_result, 8))
