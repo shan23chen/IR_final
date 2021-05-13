@@ -11,3 +11,4 @@ pyzmq~=22.0.3
 nltk~=3.5
 textblob~=0.15.3
 scikit-learn~=0.24.1
+spacy~=3.0.3
